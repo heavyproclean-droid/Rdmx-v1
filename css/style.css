@@ -284,21 +284,33 @@ button:disabled {
 ========================== */
 
 .dark-mode {
-  background: #121212;
-  color: white;
+    background: #121212;
+    color: #ffffff;
 }
 
 .large-text {
   font-size: 1.15rem;
 }
 
-.high-contrast {
-  background: black;
-  color: yellow;
+.glove-mode button,
+.glove-mode .btn,
+.glove-mode .menu-button {
+    min-height: 60px;
+    font-size: 1.2rem;
 }
 
-.one-hand-mode button {
-  margin-bottom: 15px;
+.high-contrast {
+    background: #000;
+    color: #fff;
+}
+
+.high-contrast button {
+    border: 2px solid #fff;
+}
+
+.one-hand-mode .bottom-nav {
+    bottom: 0;
+    position: fixed;
 }
 .symptom-grid {
   display: grid;
