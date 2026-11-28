@@ -113,4 +113,97 @@ export const procedures = {
     title: "Ignition System Diagnosis",
 
     tools: [
-      "Spark tester
+      "Spark tester",
+      "Insulated hand tools"
+    ],
+
+    safety: [
+      "Keep fuel vapors away from sparks.",
+      "Use an approved spark tester and follow its instructions."
+    ],
+
+    steps: [
+      "Inspect the spark plug, lead, and ignition connections.",
+      "Test for spark with an approved spark tester.",
+      "If spark is absent, isolate the stop-switch circuit using the manufacturer's procedure.",
+      "Inspect the ignition module, flywheel key, and coil air gap.",
+      "Repair or replace failed components and retest."
+    ]
+  },
+
+  lowCompression: {
+    title: "Low Compression Diagnosis",
+    tools: ["Compression gauge", "Leakdown tester", "Basic hand tools"],
+    safety: [
+      "Disable ignition before testing.",
+      "Allow a hot engine to cool before disassembly."
+    ],
+    steps: [
+      "Verify the compression gauge seals correctly in the spark plug opening.",
+      "Test compression using the equipment manufacturer's procedure.",
+      "If compression is low, inspect the piston, cylinder, and rings.",
+      "Perform a leakdown test to locate leakage if needed.",
+      "Repair damaged components and retest compression."
+    ]
+  },
+
+  crankcaseLeak: {
+    title: "Crankcase Leak Inspection",
+    tools: ["Pressure and vacuum tester", "Approved block-off plugs", "Basic hand tools"],
+    safety: [
+      "Use only the test pressure specified by the equipment manufacturer.",
+      "Keep fuel away from ignition sources."
+    ],
+    steps: [
+      "Inspect crank seals, intake boot, gaskets, and impulse line.",
+      "Seal the intake and exhaust using approved test fittings.",
+      "Pressure- and vacuum-test the crankcase to the manufacturer's specifications.",
+      "Locate leaks with an approved method and replace failed seals or gaskets.",
+      "Repeat the test before returning the equipment to service."
+    ]
+  },
+
+  pluggedExhaust: {
+    title: "Exhaust Restriction Inspection",
+    tools: ["Eye protection", "Basic hand tools", "Replacement spark-arrestor screen"],
+    safety: [
+      "Allow the muffler to cool completely before inspection.",
+      "Follow local rules for spark-arrestor service."
+    ],
+    steps: [
+      "Remove the muffler cover after the engine has cooled.",
+      "Inspect the spark-arrestor screen and exhaust outlet for carbon buildup.",
+      "Clean or replace the screen according to manufacturer instructions.",
+      "Inspect the muffler for damage and reinstall all guards.",
+      "Test engine operation."
+    ]
+  },
+
+  impulseFailure: {
+    title: "Carburetor Impulse System Inspection",
+    tools: ["Flashlight", "Basic hand tools", "Manufacturer service information"],
+    safety: ["Work in a ventilated area with the engine off and cool."],
+    steps: [
+      "Inspect the impulse line and connection points for cracks or disconnection.",
+      "Inspect the impulse passage and associated gaskets for blockage or damage.",
+      "Check for a pulse signal using the manufacturer's test procedure.",
+      "Repair the line, passage, or sealing surfaces and verify fuel pump operation."
+    ]
+  },
+
+  fuelContamination: {
+    title: "Fuel Quality and Contamination Check",
+    tools: ["Approved fuel container", "Fresh manufacturer-approved fuel mixture"],
+    safety: [
+      "Drain fuel into an approved container.",
+      "Keep fuel away from ignition sources and dispose of it properly."
+    ],
+    steps: [
+      "Check the fuel age and confirm the specified oil-to-fuel mixture.",
+      "Inspect drained fuel for water, debris, or separation.",
+      "Drain contaminated fuel from the tank and carburetor as directed by the manufacturer.",
+      "Inspect and clean the tank and replace a contaminated fuel filter.",
+      "Refill with fresh approved fuel and test operation."
+    ]
+  }
+};
