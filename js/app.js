@@ -753,6 +753,10 @@ if (
    APP STARTUP
 ===================================== */
 
+document.addEventListener('DOMContentLoaded', () => {
+    applySettings();
+});
+
 showView("homeView");
 
 if ("serviceWorker" in navigator) {
