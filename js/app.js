@@ -1,3 +1,6 @@
+import { scoreEngine }
+  from "./engine/scoreEngine.js";
+
 /* =====================================
    2-STROKE TECH ASSISTANT
    APP.JS
