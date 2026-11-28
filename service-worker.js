@@ -26,7 +26,7 @@ const FILES_TO_CACHE = [
   "./assets/icon-512.png",
   "./assets/logo.png",
   "./assets/logo-transparent.png",
-  "./assets/splash-logo.png"
+  "./splash-logo.png"
 ];
 
 self.addEventListener("install", (event) => {

@@ -240,6 +240,9 @@
     <input
       id="compressionInput"
       type="number"
+      min="0"
+      max="300"
+      step="1"
       placeholder="120">
 
     <button
@@ -250,7 +253,7 @@
 
     </button>
 
-    <div id="advancedResults"></div>
+    <div id="advancedResults" aria-live="polite"></div>
 
   </section>
 
@@ -476,7 +479,7 @@
   </main>
 
 <script src="js/engine/diagnostics.js"></script>
-<script src="js/app.js"></script>
+<script type="module" src="js/app.js"></script>
 
 </body>
 

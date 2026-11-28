@@ -628,17 +628,17 @@ document
   });
 
 function buildDiagnosticState() {
+  const compressionValue =
+    document.getElementById("compressionInput")?.value.trim() || "";
 
   return {
 
     ...diagnosticState,
 
     compression:
-      Number(
-        document.getElementById(
-          "compressionInput"
-        )?.value || 0
-      )
+      compressionValue === ""
+        ? null
+        : Number(compressionValue)
 
   };
 
@@ -666,20 +666,83 @@ if (
       const state =
         buildDiagnosticState();
 
-      advancedResults.innerHTML = `
-        <h3>Diagnostic State</h3>
+      if (
+        state.compression !== null &&
+        (
+          !Number.isFinite(state.compression) ||
+          state.compression < 0 ||
+          state.compression > 300
+        )
+      ) {
+        alert("Enter a compression reading from 0 to 300 PSI.");
+        return;
+      }
 
-        <pre>${JSON.stringify(
-          state,
-          null,
-          2
-        )}</pre>
-      `;
+      const rankedResults =
+        scoreEngine(state);
 
-      console.log(
-        "Diagnostic State:",
-        state
-      );
+      advancedResults.replaceChildren();
+
+      const heading = document.createElement("h3");
+      heading.textContent = "Ranked likely causes";
+      advancedResults.appendChild(heading);
+
+      if (rankedResults.length === 0) {
+        const emptyState = document.createElement("p");
+        emptyState.textContent =
+          "Select one or more present symptoms or enter a compression reading to see ranked results.";
+        advancedResults.appendChild(emptyState);
+        return;
+      }
+
+      const appendList = (container, title, items) => {
+        if (!items.length) return;
+
+        const listHeading = document.createElement("h4");
+        listHeading.textContent = title;
+        container.appendChild(listHeading);
+
+        const list = document.createElement("ul");
+        items.forEach(item => {
+          const listItem = document.createElement("li");
+          listItem.textContent = item;
+          list.appendChild(listItem);
+        });
+        container.appendChild(list);
+      };
+
+      rankedResults.forEach((result, index) => {
+        const card = document.createElement("article");
+        card.className = "diagnosis-card";
+
+        const causeHeading = document.createElement("h4");
+        causeHeading.textContent = `${index + 1}. ${result.name}`;
+        card.appendChild(causeHeading);
+
+        const confidence = document.createElement("p");
+        confidence.textContent =
+          `${result.confidence}% confidence - Score ${result.score} - ` +
+          `${result.difficulty} - ${result.repairTime}`;
+        card.appendChild(confidence);
+
+        appendList(card, "Inspections", result.inspections);
+        appendList(card, "Tests", result.tests);
+        appendList(card, "Recommended repairs", result.repairs);
+
+        if (result.procedure) {
+          const procedureHeading = document.createElement("h4");
+          procedureHeading.textContent = result.procedure.title;
+          card.appendChild(procedureHeading);
+
+          appendList(card, "Safety", result.procedure.safety);
+          appendList(card, "Tools", result.procedure.tools);
+          appendList(card, "Procedure", result.procedure.steps);
+        }
+
+        advancedResults.appendChild(card);
+      });
+
+      console.log("Ranked diagnostic results:", rankedResults);
 
     }
   );
@@ -691,6 +754,16 @@ if (
 ===================================== */
 
 showView("homeView");
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .catch(error => {
+        console.error("Service worker registration failed:", error);
+      });
+  });
+}
 
 console.log(
   "2-Stroke Tech Assistant Loaded"
