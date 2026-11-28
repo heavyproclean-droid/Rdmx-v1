@@ -560,14 +560,10 @@ if (beginDiagnosisBtn) {
 
 }
 
+/* =====================================
+   ADVANCED DIAGNOSTICS
+===================================== */
 
-/* =====================================
-   APP STARTUP
-===================================== */
-showView("homeView");
-/* =====================================
-   ADVANCED DIAGNOSTICS TILES
-===================================== */
 const diagnosticState = {};
 
 document
@@ -583,10 +579,10 @@ document
       "click",
       () => {
 
-        const state =
+        const currentState =
           diagnosticState[symptom];
 
-        if (state === null) {
+        if (currentState === null) {
 
           diagnosticState[symptom] = true;
 
@@ -599,7 +595,7 @@ document
           );
 
         } else if (
-          state === true
+          currentState === true
         ) {
 
           diagnosticState[symptom] = false;
@@ -628,9 +624,75 @@ document
 
   });
 
+function buildDiagnosticState() {
 
+  return {
+
+    ...diagnosticState,
+
+    compression:
+      Number(
+        document.getElementById(
+          "compressionInput"
+        )?.value || 0
+      )
+
+  };
+
+}
+
+const runAdvancedBtn =
+  document.getElementById(
+    "runAdvancedDiagnosis"
+  );
+
+const advancedResults =
+  document.getElementById(
+    "advancedResults"
+  );
+
+if (
+  runAdvancedBtn &&
+  advancedResults
+) {
+
+  runAdvancedBtn.addEventListener(
+    "click",
+    () => {
+
+      const state =
+        buildDiagnosticState();
+
+      advancedResults.innerHTML = `
+        <h3>Diagnostic State</h3>
+
+        <pre>${JSON.stringify(
+          state,
+          null,
+          2
+        )}</pre>
+      `;
+
+      console.log(
+        "Diagnostic State:",
+        state
+      );
+
+    }
+  );
+
+},
+
+/* =====================================
+   APP STARTUP
+===================================== */
 
 showView("homeView");
+
+console.log(
+  "2-Stroke Tech Assistant Loaded"
+);
+
 
 console.log(
   "2-Stroke Tech Assistant Loaded"
