@@ -681,18 +681,13 @@ if (
     }
   );
 
-},
+}
 
 /* =====================================
    APP STARTUP
 ===================================== */
 
 showView("homeView");
-
-console.log(
-  "2-Stroke Tech Assistant Loaded"
-);
-
 
 console.log(
   "2-Stroke Tech Assistant Loaded"
