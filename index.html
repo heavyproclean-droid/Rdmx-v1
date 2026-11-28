@@ -172,87 +172,83 @@
 
     </div>
 
-    <!-- ADVANCED DIAGNOSTICS -->
+   <!-- ADVANCED DIAGNOSTICS -->
 
-    <div id="advancedView" class="view hidden">
+<div id="advancedView" class="view hidden">
 
-    <label><section class="card">
+  <section class="card">
 
-  <h2>Advanced Diagnostics</h2>
+    <h2>Advanced Diagnostics</h2>
 
-  <p>
-    Tap symptoms that are present.
-  </p>
+    <p>
+      Tap symptoms to cycle through:
+      Unknown → Present → Not Present
+    </p>
 
-  <div id="symptomTiles" class="symptom-grid">
+    <div id="symptomTiles" class="symptom-grid">
 
-    <button class="symptom-tile" data-symptom="noStart">
-      No Start
+      <button class="symptom-tile" data-symptom="noStart">
+        No Start
+      </button>
+
+      <button class="symptom-tile" data-symptom="hardStart">
+        Hard Start
+      </button>
+
+      <button class="symptom-tile" data-symptom="startsThenDies">
+        Starts Then Dies
+      </button>
+
+      <button class="symptom-tile" data-symptom="noIdle">
+        No Idle
+      </button>
+
+      <button class="symptom-tile" data-symptom="bogUnderThrottle">
+        Bogs Under Throttle
+      </button>
+
+      <button class="symptom-tile" data-symptom="lowPower">
+        Low Power
+      </button>
+
+      <button class="symptom-tile" data-symptom="excessiveSmoke">
+        Excessive Smoke
+      </button>
+
+      <button class="symptom-tile" data-symptom="noSpark">
+        No Spark
+      </button>
+
+      <button class="symptom-tile" data-symptom="wetPlug">
+        Wet Plug
+      </button>
+
+      <button class="symptom-tile" data-symptom="dryPlug">
+        Dry Plug
+      </button>
+
+      <button class="symptom-tile" data-symptom="runsOnlyOnChoke">
+        Runs Only On Choke
+      </button>
+
+    </div>
+
+    <label for="compressionInput">
+      Compression PSI
+    </label>
+
+    <input
+      id="compressionInput"
+      type="number"
+      placeholder="120">
+
+    <button
+      id="runAdvancedDiagnosis"
+      type="button">
+
+      Run Advanced Diagnostics
+
     </button>
-
-    <button class="symptom-tile" data-symptom="hardStart">
-      Hard Start
-    </button>
-
-    <button class="symptom-tile" data-symptom="startsThenDies">
-      Starts Then Dies
-    </button>
-
-    <button class="symptom-tile" data-symptom="noIdle">
-      No Idle
-    </button>
-
-    <button class="symptom-tile" data-symptom="bogUnderThrottle">
-      Bogs Under Throttle
-    </button>
-
-    <button class="symptom-tile" data-symptom="lowPower">
-      Low Power
-    </button>
-
-    <button class="symptom-tile" data-symptom="excessiveSmoke">
-      Excessive Smoke
-    </button>
-
-    <button class="symptom-tile" data-symptom="noSpark">
-      No Spark
-    </button>
-
-    <button class="symptom-tile" data-symptom="wetPlug">
-      Wet Plug
-    </button>
-
-    <button class="symptom-tile" data-symptom="dryPlug">
-      Dry Plug
-    </button>
-
-    <button class="symptom-tile" data-symptom="runsOnlyOnChoke">
-      Runs Only On Choke
-    </button>
-
-  </div>
-
-  <label for="compressionInput">
-    Compression PSI
-  </label>
-
-  <input
-    id="compressionInput"
-    type="number"
-    placeholder="120">
-
-  <button
-    id="runAdvancedDiagnosis"
-    type="button">
-
-    Run Advanced Diagnostics
-
-  </button>
-
-  <div id="advancedResults"></div>
-
-</section>
-     
 
     <div id="advancedResults"></div>
 
