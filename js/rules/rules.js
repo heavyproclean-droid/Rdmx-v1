@@ -131,7 +131,7 @@ export const rules = [
     impulseFailure: 12,
     carbAdjustment: 10
   }
-}
+},
 
   // =========================
   // DRY PLUG
